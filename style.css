@@ -1,23 +1,15 @@
-/* *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-} */
-
 body{
     font-family: Arial, Helvetica, sans-serif;
     background-image: linear-gradient(to right, rgb(20, 220, 97), rgb(17, 71, 48));
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .box{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     background-color: rgba(0, 0, 0, 0.6);
     padding: 15px;
     border-radius: 15px;
-    width: 20%;
     color: #fff;
 }
 
@@ -48,10 +40,6 @@ legend{
     letter-spacing: 2px;
 }
 
-.inputUser.error {
-    border-bottom: 1px solid #990000; 
-    outline: red;
-}
 
 .labelInput{
     position: absolute;
@@ -89,5 +77,21 @@ legend{
 
 #submit:hover {
     background-image: linear-gradient(to right, rgb(27, 151, 74), rgb(26, 162, 103));    
+}
+
+
+
+.inputBox a{
+    position: relative;
+    font-size: 10px;
+    visibility: hidden;
+}
+.inputBox.error input{
+    border-color: #cd220f;
+}
+
+.inputBox.error a {
+    color: #e24e3e;
+    visibility: visible;
 }
 
