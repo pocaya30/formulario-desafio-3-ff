@@ -99,7 +99,7 @@ function validNumber(number, minNumbers){
     return false;
 }
 
-
+//mensagem de erro
 function errorInput(input,message){
     const formItem = input.parentElement;
     const textMessage = formItem.querySelector("a")
