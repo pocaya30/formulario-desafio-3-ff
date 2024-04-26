@@ -13,9 +13,13 @@ const dateInf = document.querySelector("#data_nascimento");
 form.addEventListener("submit", (event) => {
     event.preventDefault();
 
+    let isValid = true;
+
+
     //verifica se o nome está vazio.
     if(nameInput.value === "" ){
         errorInput(nameInput , "Preencha o seu nome!");
+        isValid = false;
     }else{
         const formItem = nameInput.parentElement;
         formItem.classList = "inputBox";
@@ -24,6 +28,7 @@ form.addEventListener("submit", (event) => {
     //verificar email e se é valido.
     if(emailInput.value === "" || !isEmailValid(emailInput.value)){
         errorInput(emailInput , "Digite um email válido!");
+        isValid = false;
     }else{
         const formItem = emailInput.parentElement;
         formItem.classList = "inputBox";
@@ -32,6 +37,7 @@ form.addEventListener("submit", (event) => {
     //verificar quantidade de números digitados.
     if(!validNumber(telInput.value, 8)){
         errorInput(telInput , "O número precisa de no mínimo 8 números");
+        isValid = false;
     }else{
         const formItem = telInput.parentElement;
         formItem.classList = "inputBox";
@@ -40,6 +46,7 @@ form.addEventListener("submit", (event) => {
     //Verificar data de Nascimento
     if(dateInf.value === ""){
         errorInput(dateInf , "Selecione a Data de Nascimento");
+        isValid = false;
     }else{
         const formItem = dateInf.parentElement;
         formItem.classList = "inputBox";
@@ -49,10 +56,12 @@ form.addEventListener("submit", (event) => {
     if(genderMale.checked || genderFemale.checked || genderOther.checked === true){
     } else{
         alert("Selecione um Gênero")
+        isValid = false;
     }
 
     if(cityInput.value === ""){
         errorInput(cityInput , "Digite a sua cidade!");
+        isValid = false;
     }else{
         const formItem = cityInput.parentElement;
         formItem.classList = "inputBox";
@@ -60,6 +69,7 @@ form.addEventListener("submit", (event) => {
 
     if(stateInput.value === ""){
         errorInput(stateInput , "Digite o Estado!");
+        isValid = false;
     }else{
         const formItem = stateInput.parentElement;
         formItem.classList = "inputBox";
@@ -67,13 +77,19 @@ form.addEventListener("submit", (event) => {
 
     if(adressInput.value === ""){
         errorInput(adressInput , "Digite o seu Endereço!");
+        isValid = false;
     }else{
         const formItem = adressInput.parentElement;
         formItem.classList = "inputBox";
     }
-    
 
-    form.submit();
+    if (isValid) {
+        alert("Formulário enviado!");
+        form.reset();
+        form.submit();
+    } else {
+    }
+    
 })
 
 //função que valida o email
@@ -99,7 +115,7 @@ function validNumber(number, minNumbers){
     return false;
 }
 
-//mensagem de erro
+//mensagem
 function errorInput(input,message){
     const formItem = input.parentElement;
     const textMessage = formItem.querySelector("a")
